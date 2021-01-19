@@ -1,0 +1,39 @@
+// В этом файле должны быть стили для БЭМ-блока piano, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+// Очередность: http://nicothin.github.io/idiomatic-pre-CSS/#priority
+
+.piano {
+
+  $block-name:                &; // #{$block-name}__element
+
+  display: flex;
+  justify-content: center;
+
+  &__key {
+    width: var(--width);
+    height: calc(var(--width) * 4);
+
+    &--white {
+      --width: 100px; // stylelint-disable-line plugin/selector-bem-pattern
+      background-color: $white;
+      border: 1px solid $gray-darkest;
+    }
+
+    &--white#{$block-name}__key--active {
+      background-color: $gray-lighter;
+    }
+
+    &--black {
+      --width: 60px; // stylelint-disable-line
+      margin-right: calc(var(--width) / -2);
+      margin-left: calc(var(--width) / -2);
+      z-index: 2;
+
+      background-color: $black;
+    }
+
+    &--black#{block-name}__key--active {
+      background-color: $gray-darkest;
+    }
+  }
+}

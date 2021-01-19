@@ -1,0 +1,34 @@
+//- Все примеси в этом файле должны начинаться c имени блока (piano)
+
+mixin piano(text, mods)
+
+  //- Принимает:
+  //-   text    {string} - текст
+  //-   mods    {string} - список модификаторов
+  //- Вызов:
+        +piano('Текст', 'some-mod')
+
+  -
+    // список модификаторов
+    var allMods = '';
+    if(typeof(mods) !== 'undefined' && mods) {
+      var modsList = mods.split(',');
+      for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' piano--' + modsList[i].trim();
+      }
+    }
+
+  section.piano(class=allMods)&attributes(attributes)
+    block piano__content
+      .piano__key.piano__key--white(data-note='C')
+      .piano__key.piano__key--black(data-note='Db')
+      .piano__key.piano__key--white(data-note='D')
+      .piano__key.piano__key--black(data-note='Eb')
+      .piano__key.piano__key--white(data-note='E')
+      .piano__key.piano__key--white(data-note='F')
+      .piano__key.piano__key--black(data-note='Gb')
+      .piano__key.piano__key--white(data-note='G')
+      .piano__key.piano__key--black(data-note='Ab')
+      .piano__key.piano__key--white(data-note='A')
+      .piano__key.piano__key--black(data-note='Bb')
+      .piano__key.piano__key--white(data-note='B')
